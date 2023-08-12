@@ -1,0 +1,5 @@
+local buff_gameobj = GetBuff("in_inf_cooler_buff")
+local buff = buff_gameobj.GetComponent("BaseBuff") --Gets the "BaseBuff" component
+buff.attributeEffects = {
+BuffAttribute.Create("COURIER_SLOTS", "5")
+}
