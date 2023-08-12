@@ -798,6 +798,19 @@ public class Dungeon : MonoBehaviour
 		if (player == null)
 		{
 			player = Player.CreateNewPlayer();
+			if (Globals.GetInstance().old_buffs != null && Globals.GetInstance().keepHangoversOnDeath)
+			{
+				foreach (KeyValuePair<BaseBuff, int> keyValuePair in Globals.GetInstance().old_buffs)
+				{
+					for (int i = 0; i < keyValuePair.Value; i++)
+					{
+						if (keyValuePair.Key.buffType == BaseBuff.BuffType.Hangover)
+						{
+							player.AddBuff(keyValuePair.Key);
+						}
+					}
+				}
+			}
 		}
 		this._registeredPlayer = player;
 		Globals.GetInstance().SetPlayer(this._registeredPlayer);
@@ -2500,6 +2513,7 @@ public class Dungeon : MonoBehaviour
 		}
 		Globals.GetInstance().AddTimeScale("player_death_freeze", 0f);
 		this.hud.deathText.text = Globals.GetInstance().GetPlayer().killText;
+		Globals.GetInstance().old_buffs = Globals.GetInstance().GetPlayer().GetBuffs();
 		this.hud.deathTextContainer.SetActive(true);
 		Globals.GetInstance().PlayGlobalSound(this.hud.lootSound, "important_notification");
 		while (start_time + 5f > Time.realtimeSinceStartup)

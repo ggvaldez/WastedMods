@@ -583,7 +583,7 @@ public class Globals : MonoBehaviour
 				this._gameSaveData.lastCoolerRunScore = Mathf.Max(this.score, this._gameSaveData.lastCoolerRunScore);
 			}
 			List<BaseItem.ItemSaveData> list = new List<BaseItem.ItemSaveData>();
-			if (this._dailyOnlineMode)
+			if (this._dailyOnlineMode || this._canStashInPractice)
 			{
 				foreach (BaseItem baseItem in this.courierBox.GetItems(false))
 				{
@@ -3456,6 +3456,12 @@ public class Globals : MonoBehaviour
 	protected int _worldTimeMinute = -1;
 
 	protected string _worldTimeString = string.Empty;
+
+	public bool _canStashInPractice = false;
+
+	public Dictionary<BaseBuff, int> old_buffs = null;
+
+	public bool keepHangoversOnDeath = false;
 
 	public delegate void Callback();
 
