@@ -17,6 +17,7 @@ AddTimeBeforeHuntAction - Adds (or removes) time to S.O.B.
 
 usage:
 ```
+child_gameobject = condition_gameobject.CreateChild("added")
 component = child_gameobject.AddComponent("AddTimeBeforeHuntAction")
 component.time_change = 90
 ```
@@ -37,6 +38,7 @@ HaltOnInfiniCoolerAction - Allows for checking if player is in Courier Run
 
 usage:
 ```
+child_gameobject = condition_gameobject.CreateChild("added")
 component = child_gameobject.AddComponent("HaltOnInfiniCoolerAction")
 ```
 
